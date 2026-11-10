@@ -69,3 +69,7 @@ Each book can include:
 - `adaptations`: arrays of `{film, openingDate?, linkEvidenceId, openingEvidenceId?}`. IDs reference the book's evidence records. Film leads show a real Three.js film/book pairing and separate link, Malaysian opening and edition sources. Supplied dates remain labeled by their source's lead/confirmed status; no automatic confirmation is performed.
 
 A saved frontend export is the input, not a hard-coded discovery watchlist. Broad discovery and evidence review belong in the upstream collection pipeline, which was absent from this repository.
+
+## Simulated signal preview
+
+The default research shelf now opens with sample signals enabled at the user's request. `src/simulation.tsx` generates deterministic, book-specific fictional charts, reader discussion summaries, media mentions and review workflow examples. These are labeled SIMULATED, have no fabricated external source links, and are never written into exported evidence or marked confirmed. Real ISBNs and report metadata remain unchanged. Use **Show report data only** or `?evidence=real` to see just supplied observations. Imported exports and isolated fixture books never receive this sample overlay. The simulated period is explicitly fixed to 5 October–8 November 2026.

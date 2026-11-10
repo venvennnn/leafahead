@@ -1,3 +1,4 @@
+import { SimulatedSignal, SimulatedEvidence } from "./simulation";
 import React, { useState, useCallback } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -114,6 +115,12 @@ function App() {
     ].id,
   );
   const [reset, setReset] = useState(0);
+  const [sampleMode, setSampleMode] = useState(
+    new URLSearchParams(location.search).get("evidence") !== "real" &&
+      !localStorage.getItem("leaf-export"),
+  );
+  const simulated =
+    sampleMode && !!books.find((b) => b.id === selected)?.research;
   const [filter, setFilter] = useState("all");
   const [evidenceFilter, setEvidenceFilter] = useState("all");
   const [query, setQuery] = useState("");
@@ -163,6 +170,7 @@ function App() {
         next = parseExport(JSON.parse(raw));
       localStorage.setItem("leaf-export", raw);
       setBooks(next);
+      setSampleMode(false);
       select(next[0].id);
       setDemo(false);
       setNotice("Export loaded successfully.");
@@ -313,6 +321,28 @@ function App() {
               </button>
             </div>
           </div>
+          {book.research && (
+            <div className="sample-banner">
+              <div>
+                <span className="tiny">
+                  {simulated
+                    ? "DEMO MODE · SIMULATED SIGNALS"
+                    : "REPORT DATA ONLY"}
+                </span>
+                <p>
+                  {simulated
+                    ? "Sample charts, discussions and media activity — fictional data for exploring the site."
+                    : "Showing only the supplied report. Search and discussion were not collected."}
+                </p>
+              </div>
+              <button
+                aria-pressed={sampleMode}
+                onClick={() => setSampleMode((v) => !v)}
+              >
+                {simulated ? "Show report data only" : "Show sample signals"}
+              </button>
+            </div>
+          )}
           <div className="insights">
             {titles.map((t, i) => {
               const Icon = icons[i],
@@ -328,45 +358,51 @@ function App() {
                       <p>{subtitles[i]}</p>
                     </div>
                   </div>
-                  <div className="illustration">
-                    {i === 0 ? (
-                      <svg
-                        viewBox="0 0 280 80"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth=".8"
-                      >
-                        {[0, 5, 10, 15, 20].map((y) => (
-                          <path
-                            key={y}
-                            d={`M10 72L58 ${44 + y / 4}L78 ${51 + y / 4}L126 ${10 + y}L154 ${36 + y / 2}L175 ${24 + y}L230 ${58 + y / 4}L270 72M80 65L126 ${10 + y}L116 ${45 + y / 2}L145 65`}
-                          />
-                        ))}
-                      </svg>
-                    ) : i === 1 ? (
-                      <Botanical />
-                    ) : (
-                      <Icon size={78} strokeWidth={0.65} />
-                    )}
-                  </div>
-                  <div className="empty-title">
-                    {i === 2 && book.research
-                      ? "Reported catalogue listing"
-                      : count
-                        ? `${count} readable sources`
-                        : book.series?.some((s) => s.kind === kinds[i])
-                          ? "Source observations"
-                          : "Awaiting comparable data"}
-                  </div>
-                  <div className="ornament">
-                    <span />
-                    <Leaf size={17} />
-                    <span />
-                  </div>
-                  {!book.series?.some((s) => s.kind === kinds[i]) && (
-                    <small>Collecting baseline</small>
+                  {simulated ? (
+                    <SimulatedSignal book={book} index={i} />
+                  ) : (
+                    <>
+                      <div className="illustration">
+                        {i === 0 ? (
+                          <svg
+                            viewBox="0 0 280 80"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth=".8"
+                          >
+                            {[0, 5, 10, 15, 20].map((y) => (
+                              <path
+                                key={y}
+                                d={`M10 72L58 ${44 + y / 4}L78 ${51 + y / 4}L126 ${10 + y}L154 ${36 + y / 2}L175 ${24 + y}L230 ${58 + y / 4}L270 72M80 65L126 ${10 + y}L116 ${45 + y / 2}L145 65`}
+                              />
+                            ))}
+                          </svg>
+                        ) : i === 1 ? (
+                          <Botanical />
+                        ) : (
+                          <Icon size={78} strokeWidth={0.65} />
+                        )}
+                      </div>
+                      <div className="empty-title">
+                        {i === 2 && book.research
+                          ? "Reported catalogue listing"
+                          : count
+                            ? `${count} readable sources`
+                            : book.series?.some((s) => s.kind === kinds[i])
+                              ? "Source observations"
+                              : "Awaiting comparable data"}
+                      </div>
+                      <div className="ornament">
+                        <span />
+                        <Leaf size={17} />
+                        <span />
+                      </div>
+                      {!book.series?.some((s) => s.kind === kinds[i]) && (
+                        <small>Collecting baseline</small>
+                      )}
+                      <SignalChart book={book} kind={kinds[i]} />
+                    </>
                   )}
-                  <SignalChart book={book} kind={kinds[i]} />
                 </section>
               );
             })}
@@ -420,7 +456,7 @@ function App() {
                       {
                         [
                           "RETRIEVED LEADS",
-                          "CONFIRMED EVIDENCE",
+                          simulated ? "SAMPLE REVIEW" : "CONFIRMED EVIDENCE",
                           "RECENT FEED",
                         ][i]
                       }
@@ -429,15 +465,23 @@ function App() {
                   </div>
                   {i < 2 && (
                     <p className="description">
-                      {i === 0
-                        ? "Relevant, readable mentions found from sources in scope. To be reviewed for confirmation."
-                        : "Verified, in-scope evidence with a clear and readable source (e.g. official listing, publisher note, or media coverage)."}
+                      {simulated
+                        ? "Fictional examples of the evidence workflow. Not collected observations."
+                        : i === 0
+                          ? "Relevant, readable mentions found from sources in scope. To be reviewed for confirmation."
+                          : "Verified, in-scope evidence with a clear and readable source (e.g. official listing, publisher note, or media coverage)."}
                     </p>
                   )}
-                  {book.research &&
-                  i !== 1 &&
-                  (evidenceFilter === "all" ||
-                    evidenceFilter === "catalogue") ? (
+                  {simulated ? (
+                    <SimulatedEvidence
+                      book={book}
+                      panel={i}
+                      filter={evidenceFilter}
+                    />
+                  ) : book.research &&
+                    i !== 1 &&
+                    (evidenceFilter === "all" ||
+                      evidenceFilter === "catalogue") ? (
                     <div className="reported-record">
                       <span className="tiny">
                         {i === 0

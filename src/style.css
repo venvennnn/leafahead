@@ -1228,3 +1228,141 @@ td button {
     font-size: 12px;
   }
 }
+.sample-banner {
+  margin: 0 28px 16px;
+  padding: 13px 17px;
+  border: 1px solid #cbd0e6;
+  background: #f7f8fe;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+}
+.sample-banner .tiny {
+  color: var(--blue);
+}
+.sample-banner p {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 6px 0 0;
+}
+.sample-banner button {
+  font-size: 11px;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--blue);
+  color: var(--blue);
+  padding: 5px 0;
+}
+.sample-badge {
+  font-family: "DM Sans", sans-serif;
+  font-size: 7px;
+  letter-spacing: 1.3px;
+  color: var(--blue);
+  border: 1px solid #cbd0e6;
+  padding: 3px 6px;
+  display: inline-block;
+}
+.sample-signal {
+  padding-top: 12px;
+}
+.sample-stat {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 43px;
+  line-height: 1;
+  margin-top: 12px;
+  color: var(--blue);
+}
+.sample-stat small {
+  display: inline;
+  font-size: 15px;
+  letter-spacing: 0;
+  color: #8993ab;
+}
+.sample-signal p {
+  font-size: 12px;
+  font-style: italic;
+  margin: 6px 0;
+}
+.sample-signal svg {
+  width: 100%;
+  height: 63px;
+  color: var(--blue);
+  display: block;
+  margin: 10px 0;
+}
+.sample-signal strong {
+  font:
+    13px "DM Sans",
+    sans-serif;
+  color: var(--blue);
+}
+.sample-signal strong span {
+  font:
+    10px Georgia,
+    serif;
+  color: #6d7564;
+}
+.sample-signal > small {
+  line-height: 1.8;
+  margin-top: 7px;
+}
+.sample-entries {
+  padding-top: 5px;
+}
+.sample-entries article {
+  padding: 13px 0;
+  border-bottom: 1px solid #e2e5dc;
+}
+.sample-entries .tiny {
+  font-size: 7px;
+  color: var(--blue);
+}
+.sample-entries h4,
+.sample-review h4 {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+.sample-entries p,
+.sample-review p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #717c63;
+  margin: 4px 0;
+}
+.sample-entries > small,
+.sample-review > small {
+  display: block;
+  font-size: 9px;
+  color: #818b75;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+.sample-review {
+  padding: 25px 4px;
+}
+.sample-review h4 {
+  margin-top: 15px;
+}
+@media (max-width: 650px) {
+  .sample-banner {
+    margin: 0 18px 16px;
+    align-items: start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sample-banner p {
+    font-size: 11px;
+  }
+  .sample-stat {
+    font-size: 36px;
+  }
+  .sample-signal strong span {
+    display: block;
+    margin-top: 4px;
+  }
+  .sample-signal svg {
+    height: 50px;
+  }
+}
