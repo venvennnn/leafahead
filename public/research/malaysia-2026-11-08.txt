@@ -1,0 +1,114 @@
+EAF AHEAD / MALAYSIA
+What belongs on your radar?
+A dated public-data research brief for Malaysian booksellers. Captured 2026-11-08T16:02:26.433027+08:00.
+
+Coverage
+Book radar
+Social discussion
+Releases
+Charts
+Method
+Partial live analysis. No SerpApi credential was available for this run. Google Search, Google Trends, YouTube and TikTok Discover, and indexed X/Instagram/TikTok/Reddit searches have no live results here. Their notebook integrations run when you provide your own key. This report contains only the observations actually collected.
+
+140
+captured catalogue records
+0
+retrieved discussion / discovery leads
+17
+publisher upcoming records
+9
+available charts
+Findings from this capture
+Captured 140 records across 6 collections from 3 organisations. These are capped catalogue observations, not sales totals.
+Verified exact publisher dates for 17 upcoming-collection entries; 17 are scheduled after capture.
+16 captured publisher entries are scheduled within the next 30 days. Use the release queue to check edition details and plan launch outreach.
+Earliest future dated item in this captured set: Turath - Kusangkakan Pahala Rupanya Dosa (2026) — 2026-11-10. Reconfirm with the publisher before a promotion.
+The 12 fetched MYR-priced listings range from RM 33.00 to RM 115.00. This small detail sample is not a market price distribution.
+Discussion and search momentum cannot be assessed from this run because the required live discovery data is unavailable.
+Coverage and collection outcomes
+source	state	Tasks
+Google Books	HTTP 429	5
+Kinokuniya Malaysia	observed	8
+MPH	observed	10
+PTS	observed	22
+SerpApi	missing credential	40
+X API	missing credential	1
+Inspect every collection and API request
+Buyer review shortlist
+Inspect source evidence and confirm the edition before taking an action. Link counts describe this retrieved sample.
+
+title	author	isbn	origin	source_url	discovery_status	unique_evidence_links	source_types	excitement_cues	action	buyer_feedback
+Greta and the Giants : inspired by Greta Thunberg's stand to save the world (Illustrated)		9780711253759	Kinokuniya Malaysia	Open original source ↗	not collected				Review sources, confirm edition and check availability	
+NAMA SAYA HASMAH		9789678608299	Kinokuniya Malaysia	Open original source ↗	not collected				Review sources, confirm edition and check availability	
+It Ends With Us (UK)		9781471156267	MPH	Open original source ↗	not collected				Review sources, confirm edition and check availability	
+Hamka: Tenggelamnya Kapal Van Der Wijck (Edisi 2026)		9786294932364	MPH	Open original source ↗	not collected				Review sources, confirm edition and check availability	
+Pokécology an Illustrated Guide to Pokémon Ecology (Pokemon Pikachu Press)		9781604382655	Kinokuniya Malaysia	Open original source ↗	not collected				Review sources, confirm edition and check availability	
+Observed books and catalogues
+Edition and availability evidence
+What the retrieved discussions say
+Excitement and intent are lexical cues from observed titles and snippets. They need contextual review. Indexed coverage is partial and is not a platform-wide count.
+
+No records available in this run. See coverage below.
+
+Topics and related books
+No records available in this run. See coverage below.
+
+Publisher release watch
+Upcoming means listed in a publisher upcoming collection. A release date remains unconfirmed unless found in explicit publication metadata. Search announcements remain leads until verified at an original source.
+
+title	source	url	isbn	publication_date	schedule_status	verification
+Robowaja #1: Kuasa Saga Merah - Edisi Kemas Kini	PTS	Open original source ↗	9786297858654	2026-12-09	scheduled after capture	publisher labelled Tarikh Terbit
+Captain Shooter: Pelindung Negara	PTS	Open original source ↗	9786294642218	2026-11-30	scheduled after capture	publisher labelled Tarikh Terbit
+Kita Pendakwah bukan Penghukum	PTS	Open original source ↗		2026-11-20	scheduled after capture	publisher labelled Tarikh Terbit
+Krisis Idea dan Pemikiran dalam Dunia Islam	PTS	Open original source ↗		2026-11-20	scheduled after capture	publisher labelled Tarikh Terbit
+Solat yang Mengubah Diri dan Negara	PTS	Open original source ↗		2026-11-20	scheduled after capture	publisher labelled Tarikh Terbit
+Turath - Genius Imam Syafie: Permata Umat Sepanjang Zaman (2026)	PTS	Open original source ↗	9786294932685	2026-11-20	scheduled after capture	publisher labelled Tarikh Terbit
+The Finacial Well Being Book	PTS	Open original source ↗	9786294641662	2026-11-20	scheduled after capture	publisher labelled Tarikh Terbit
+The Smart Marketing Book	PTS	Open original source ↗	9786294641648	2026-11-20	scheduled after capture	publisher labelled Tarikh Terbit
+The Influence Book	PTS	Open original source ↗	9786294641686	2026-11-20	scheduled after capture	publisher labelled Tarikh Terbit
+The Smart Advertising Book	PTS	Open original source ↗	9786294641679	2026-11-20	scheduled after capture	publisher labelled Tarikh Terbit
+The Entrepreneur’s Book	PTS	Open original source ↗	9786294641655	2026-11-20	scheduled after capture	publisher labelled Tarikh Terbit
+Turath - Melangkah selepas Patah: Seni Berdamai dengan Kehilangan (2026)	PTS	Open original source ↗	9786294930810	2026-11-18	scheduled after capture	publisher labelled Tarikh Terbit
+CUN #12: GAZA	PTS	Open original source ↗	9786297858647	2026-11-17	scheduled after capture	publisher labelled Tarikh Terbit
+Diari Conteng Jimi #6: Sekolah Genius	PTS	Open original source ↗	9786297858432	2026-11-17	scheduled after capture	publisher labelled Tarikh Terbit
+Belajar Menjadi Manusia	PTS	Open original source ↗	9786294642171	2026-11-13	scheduled after capture	publisher labelled Tarikh Terbit
+How to Raise Entrepreneurial Kids	PTS	Open original source ↗	9786294932692	2026-11-13	scheduled after capture	publisher labelled Tarikh Terbit
+Turath - Kusangkakan Pahala Rupanya Dosa (2026)	PTS	Open original source ↗	9786294931824	2026-11-10	scheduled after capture	publisher labelled Tarikh Terbit
+Research chartbook
+Analyses waiting for data
+chart	reason
+08 · Indexed discovery and public API records	No captured rows for this section.
+09 · Lexical intent cues in the retrieved sample	No captured rows for this section.
+10 · Geographic evidence basis	No captured rows for this section.
+11 · Topics in retrieved titles and snippets	No captured rows for this section.
+12 · Video candidates by channel	No captured rows for this section.
+13 · Evidence links per book and source type	Requires title-matched social or web leads.
+14 · Malaysia search interest	Requires a successful SerpApi Trends response. No substitute series is drawn.
+15 · Within-query search momentum	Needs at least 12 complete buckets with sufficient nonzero observations.
+16 · Regional search interest	No regional Trends response. City demand is not inferred.
+18 · Changes between comparable collections	Two successful capture days for the same retailer collection are required.
+19 · Edition candidates by language	No captured rows for this section.
+20 · Topic-to-book metadata relevance	Requires observed topics plus actual book descriptions.
+22 · TikTok engagement snapshots in the retrieved sample	Requires actual TikTok Discover plays and likes. These are not Malaysia-only audience counts or growth rates.
+Method and interpretation
+Capture limits and request budgets are recorded in the manifest. Collection position is not assumed to be sales rank. Catalogue presence, search interest, creator discussion and verified publication metadata are distinct signals.
+
+Title matching uses exact normalised phrases and remains reviewable. TF-IDF similarity measures metadata relevance, not reader demand. Keyword rules label anticipation, recommendations and enquiries without claiming sentiment-model calibration. Geographic labels distinguish an explicit place mention from a Malaysia-targeted search.
+
+Trends series are normalised per request. The latest bucket is excluded from momentum features. A minimum of 12 prior buckets and eight nonzero buckets within that window is required. Momentum compares the recent four-bucket mean with the previous eight. City-level interest is shown only if provided by the source.
+
+Saved retailer snapshots support comparison after a second successful capture day. Failed sources do not become zero demand. A newly captured title is not automatically a new release. Backlist revival and stockout forecasting require verified publication history and forward validation.
+
+Raw authenticated response metadata and credentials are excluded from exports. Public snippets and links should be reviewed under source access, retention and reuse rules before recurring commercial distribution.
+
+API and source documentation
+Google Search / SerpApi
+Google Trends / SerpApi
+YouTube / SerpApi
+TikTok Discover / SerpApi
+X recent search
+Google Books metadata
+Malaysian reviewer checklist
+For each shortlisted item record whether it is useful, irrelevant or ambiguous, and whether you would check stock, plan a display or prepare a launch. Confirm source identity and edition details before acting.
+
+Leaf Ahead · Public-data pilot · No synthetic market observations

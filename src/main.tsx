@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import Shelf from "./Shelf";
 import { demoBooks, parseExport, type Book } from "./data";
+import { researchBooks } from "./research";
+const fixtureMode = new URLSearchParams(location.search).has("demo");
 import "./style.css";
 import { SignalChart, Adaptations, MonthlyBrief } from "./intelligence";
 const pages = [
@@ -98,12 +100,18 @@ function App() {
         JSON.parse(localStorage.getItem("leaf-export") || "null"),
       );
     } catch {
-      return demoBooks;
+      return fixtureMode ? demoBooks : researchBooks;
     }
   });
-  const [demo, setDemo] = useState(!localStorage.getItem("leaf-export"));
+  const [demo, setDemo] = useState(
+    fixtureMode && !localStorage.getItem("leaf-export"),
+  );
   const [selected, setSelected] = useState(
-    books[Math.min(7, books.length - 1)].id,
+    books[
+      fixtureMode
+        ? Math.min(7, books.length - 1)
+        : Math.min(2, books.length - 1)
+    ].id,
   );
   const [reset, setReset] = useState(0);
   const [filter, setFilter] = useState("all");
@@ -168,7 +176,8 @@ function App() {
       (filter === "all" ||
         (filter === "saved"
           ? saved.includes(b.id)
-          : b.evidence.some((e) => e.kind === filter))),
+          : b.evidence.some((e) => e.kind === filter) ||
+            (filter === "catalogue" && !!b.research))),
   );
   return (
     <>
@@ -341,11 +350,13 @@ function App() {
                     )}
                   </div>
                   <div className="empty-title">
-                    {count
-                      ? `${count} readable sources`
-                      : book.series?.some((s) => s.kind === kinds[i])
-                        ? "Source observations"
-                        : "Awaiting comparable data"}
+                    {i === 2 && book.research
+                      ? "Reported catalogue listing"
+                      : count
+                        ? `${count} readable sources`
+                        : book.series?.some((s) => s.kind === kinds[i])
+                          ? "Source observations"
+                          : "Awaiting comparable data"}
                   </div>
                   <div className="ornament">
                     <span />
@@ -360,6 +371,26 @@ function App() {
               );
             })}
           </div>
+          {book.research && (
+            <section className="research-note">
+              <span className="tiny">SUPPLIED RESEARCH · 8 NOVEMBER 2026</span>
+              <p>
+                {book.research.origin} · ISBN{" "}
+                {book.edition.isbn || "not supplied"} · {book.research.note}
+              </p>
+              <small>
+                Search and discussion were not collected in this capture. Google
+                Books returned HTTP 429. No sales or inventory claims.{" "}
+                <a
+                  href="/research/malaysia-2026-11-08.txt"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Read the supplied capture ↗
+                </a>
+              </small>
+            </section>
+          )}
           <div className="evidence-filters" aria-label="Evidence source filter">
             {["all", ...kinds].map((k) => (
               <button
@@ -403,7 +434,34 @@ function App() {
                         : "Verified, in-scope evidence with a clear and readable source (e.g. official listing, publisher note, or media coverage)."}
                     </p>
                   )}
-                  {items.length ? (
+                  {book.research &&
+                  i !== 1 &&
+                  (evidenceFilter === "all" ||
+                    evidenceFilter === "catalogue") ? (
+                    <div className="reported-record">
+                      <span className="tiny">
+                        {i === 0
+                          ? "REPORT-SUPPLIED LEAD"
+                          : "8 NOV 2026 · CATALOGUE CAPTURE"}
+                      </span>
+                      <h4>{book.title}</h4>
+                      <p>
+                        {book.research.origin} · {book.research.scope}
+                      </p>
+                      <small>
+                        {book.edition.isbn
+                          ? "ISBN " + book.edition.isbn
+                          : "ISBN not supplied"}
+                        {book.edition.date
+                          ? " · Reported publication: " + book.edition.date
+                          : ""}
+                      </small>
+                      <p>
+                        Original source URL not included in the pasted report.
+                        Awaiting verification.
+                      </p>
+                    </div>
+                  ) : items.length ? (
                     items.map((e) => (
                       <a
                         className="evidence-link"
@@ -529,13 +587,17 @@ function App() {
                       <span className="tiny">
                         {demo
                           ? "ILLUSTRATIVE TITLE"
-                          : `${b.evidence.length} SOURCES`}
+                          : b.research
+                            ? `${b.research.origin.toUpperCase()} · REPORTED`
+                            : `${b.evidence.length} SOURCES`}
                       </span>
                       <h2>{b.title}</h2>
                       <p>
-                        {b.evidence.length
-                          ? "Review sources before a buying decision."
-                          : "No discovery evidence loaded."}
+                        {b.research
+                          ? `ISBN ${b.edition.isbn || "not supplied"} · Captured 8 Nov 2026. Check stock.`
+                          : b.evidence.length
+                            ? "Review sources before a buying decision."
+                            : "No discovery evidence loaded."}
                       </p>
                       <button
                         onClick={() => {
@@ -585,7 +647,10 @@ function App() {
                     )
                     .map((b) => (
                       <tr key={b.id}>
-                        <td>{b.edition.date}</td>
+                        <td>
+                          {b.edition.date}
+                          {b.research && <small>Report-supplied date</small>}
+                        </td>
                         <td>
                           <button
                             onClick={() => {
@@ -600,6 +665,11 @@ function App() {
                         <td>{b.edition.publisher}</td>
                         <td>{b.edition.isbn || "Not supplied"}</td>
                         <td>
+                          {b.research && (
+                            <span>
+                              {b.research.origin} · Original URL not supplied
+                            </span>
+                          )}
                           {b.evidence
                             .filter((e) => e.kind === "catalogue")
                             .map((e) => (
@@ -674,8 +744,12 @@ function App() {
                 <h2>Bring your own evidence.</h2>
                 <p>
                   Load a saved JSON export below. Data stays in this browser. No
-                  API keys are needed. Included book designs are fictional
-                  development fixtures.
+                  API keys are needed. The default titles come from your
+                  supplied 8 November 2026 research capture. Original source
+                  URLs were absent; reported dates and catalogue entries await
+                  source verification. Typographic cover designs are
+                  illustrative. The second supplied analysis uses synthetic
+                  signals, which are excluded.
                 </p>
               </section>
             </div>
@@ -692,7 +766,9 @@ function App() {
           <span>
             {demo
               ? "DEMONSTRATION SHELF · NO LIVE EVIDENCE"
-              : "SAVED EXPORT · LOCAL TO THIS BROWSER"}
+              : books.some((b) => b.research)
+                ? "RESEARCH CAPTURE · 8 NOV 2026 · SOURCE LINKS NOT SUPPLIED"
+                : "SAVED EXPORT · LOCAL TO THIS BROWSER"}
           </span>
           <label className="import-button">
             <Upload size={14} /> Load export

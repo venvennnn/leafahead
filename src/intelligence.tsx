@@ -280,6 +280,12 @@ export function MonthlyBrief({ books }: { books: Book[] }) {
               releases.map((b) => (
                 <p key={b.id}>
                   {b.edition.date} · {b.title} · {b.edition.publisher}
+                  {b.research && (
+                    <small className="report-date-note">
+                      {" "}
+                      Report-supplied date · original publisher URL missing
+                    </small>
+                  )}
                 </p>
               ))
             ) : i === 1 && discovered.length ? (

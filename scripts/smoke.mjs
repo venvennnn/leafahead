@@ -10,7 +10,7 @@ const page = await browser.newPage({
 });
 const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
-await page.goto("http://localhost:5173");
+await page.goto("http://localhost:5173/?demo=1");
 await page.waitForTimeout(2000);
 await page.screenshot({
   path: "artifacts/signal-room-desktop.png",
@@ -42,7 +42,7 @@ if (
   await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)
 )
   throw Error("mobile overflow");
-await page.goto("http://localhost:5173/?fallback=1");
+await page.goto("http://localhost:5173/?demo=1&fallback=1");
 await page.locator(".fallback-shelf button").first().click();
 await page
   .getByRole("heading", { name: "The Red Hill", exact: true })

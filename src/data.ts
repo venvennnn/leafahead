@@ -10,6 +10,7 @@ export type Evidence = {
   editionId?: string;
 };
 export type Book = {
+  research?: { origin: string; captured: string; scope: string; note: string };
   id: string;
   title: string;
   author: string;

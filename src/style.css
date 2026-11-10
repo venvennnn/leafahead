@@ -1168,3 +1168,63 @@ td button {
     font-size: 9px;
   }
 }
+.research-note {
+  margin: 18px 28px 0;
+  padding: 15px 18px;
+  border-left: 2px solid var(--blue);
+  background: #f8f9f6;
+}
+.research-note .tiny {
+  color: var(--blue);
+}
+.research-note p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+.research-note small {
+  font-size: 10px;
+  color: #6a7261;
+}
+.reported-record {
+  padding: 18px 3px 5px;
+}
+.reported-record .tiny {
+  color: var(--blue);
+  font-size: 7px;
+}
+.reported-record h4 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+.reported-record p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #6a7460;
+  margin: 8px 0;
+}
+.reported-record small {
+  font-size: 10px;
+}
+.radar-grid h2 {
+  overflow-wrap: anywhere;
+}
+.book-cover {
+  overflow: hidden;
+}
+.book-cover h2 {
+  font-size: 15px !important;
+}
+.book-cover .botanical {
+  max-height: 54px;
+}
+@media (max-width: 650px) {
+  .research-note {
+    margin: 18px 18px 0;
+  }
+  .research-note p {
+    font-size: 12px;
+  }
+}

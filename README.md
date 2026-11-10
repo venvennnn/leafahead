@@ -1,6 +1,6 @@
 # Leaf Ahead
 
-An evidence-first Malaysian book intelligence desk. React, TypeScript, Vite and Three.js. All included titles are fictional, isolated development fixtures in `src/data.ts`; no market claims or inventory statuses are fabricated.
+An evidence-first Malaysian book intelligence desk. React, TypeScript, Vite and Three.js. The default shelf contains 22 catalogue/release records from the user-supplied 8 November 2026 research capture (`src/research.ts`). Its 17 publisher dates and supplied ISBNs are preserved as report-supplied metadata, not independently verified source evidence. Missing authors, formats and URLs are labeled explicitly. No market claims or inventory statuses are fabricated. Fictional fixtures remain isolated behind `?demo=1` for interaction tests.
 
 ## Run
 
@@ -50,7 +50,7 @@ Use **Load export** in the footer to import JSON. The adapter validates and norm
 
 Evidence kinds: `search`, `social`, `catalogue`, `media`; statuses: `lead`, `confirmed`. Omit `editionId` for work-level evidence. Source URLs must be HTTP(S). Export source failures as readable evidence only when a source actually exists; no zero-result or availability claims are inferred from missing records.
 
-The repository originally contained no notebook, pipeline, exports or source schema. This is a new frontend adapter, not an integration with an existing pipeline. Daily observations, source failures, and film-first adaptation leads can be supplied through the optional fields below. Without them, their panels show explicit empty states. Monthly Brief filters saved captures and edition dates by month; it does not infer market-wide trends. No TMDB or API credentials are used. No data fetching or automatic discovery is performed by this frontend.
+The repository originally contained no notebook, pipeline, exports or source schema. The subsequently supplied text capture is available at `/research/malaysia-2026-11-08.txt`; its original outbound URLs were lost when pasted. The second supplied methodological analysis explicitly describes synthetic signals and is excluded from production observations. The report’s spelling “The Finacial Well Being Book” is preserved verbatim. This is a new frontend adapter, not an integration with an existing pipeline. Daily observations, source failures, and film-first adaptation leads can be supplied through the optional fields below. Without them, their panels show explicit empty states. Monthly Brief filters saved captures and edition dates by month; it does not infer market-wide trends. No TMDB or API credentials are used. No data fetching or automatic discovery is performed by this frontend.
 
 ## Shelf and accessibility
 

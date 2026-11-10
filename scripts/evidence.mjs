@@ -5,7 +5,7 @@ const browser = await chromium.launch({
   args: ["--no-sandbox", "--enable-unsafe-swiftshader"],
 });
 const p = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
-await p.goto("http://localhost:5173");
+await p.goto("http://localhost:5173/?demo=1");
 await p.waitForTimeout(1200);
 const canvas = p.locator("canvas");
 const r = await canvas.boundingBox();

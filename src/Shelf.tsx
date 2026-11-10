@@ -154,7 +154,7 @@ export default function Shelf({
     light.shadow.mapSize.set(1024, 1024);
     scene.add(light);
     const shelf = new THREE.Mesh(
-      new THREE.BoxGeometry(14, 0.18, 2.1),
+      new THREE.BoxGeometry(Math.max(14, books.length * 1.03 + 2), 0.18, 2.1),
       new THREE.MeshStandardMaterial({ color: "#99704a", roughness: 0.9 }),
     );
     shelf.position.y = -0.08;
@@ -289,8 +289,15 @@ export default function Shelf({
           lerp,
         );
       });
-      camera.position.x = THREE.MathUtils.lerp(camera.position.x, -offset, 0.1);
-      camera.lookAt(-offset, 1.55, 0);
+      const selectedIndex = books.findIndex((b) => b.id === selection.current);
+      const focus =
+        books.length > 10 ? (selectedIndex - (books.length - 1) / 2) * 1.03 : 0;
+      camera.position.x = THREE.MathUtils.lerp(
+        camera.position.x,
+        focus - offset,
+        reduced ? 1 : 0.1,
+      );
+      camera.lookAt(camera.position.x, 1.55, 0);
       renderer.render(scene, camera);
     };
     animate();

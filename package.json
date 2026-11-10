@@ -7,7 +7,7 @@
     "dev": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node scripts/smoke.mjs && node scripts/evidence.mjs && node scripts/intelligence.mjs"
+    "test": "node scripts/smoke.mjs && node scripts/evidence.mjs && node scripts/intelligence.mjs && node scripts/research.mjs"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.3.0",
